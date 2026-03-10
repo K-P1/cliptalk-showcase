@@ -1,15 +1,15 @@
 flowchart LR
     subgraph Client
         A[User Browser]
-        B[React Frontend (Vite)]
+        B["React Frontend (Vite)"]
         A --> B
     end
 
     subgraph API[ClipTalk Backend (FastAPI)]
-        C[Routing & Middleware\n(CORS, Sessions, Logging)]
+        C["Routing & Middleware (CORS, Sessions, Logging)"]
         D[Auth & User Services]
         E[Movies & TV Services]
-        F[Social Features\n(Reviews, Comments, Watchlist, History, Recommendations)]
+        F["Social Features (Reviews, Comments, Watchlist, History, Recommendations)"]
         B -->|HTTPS /api/*| C
         C --> D
         C --> E
@@ -17,8 +17,8 @@ flowchart LR
     end
 
     subgraph DataLayer[Data & Caching]
-        G[(PostgreSQL\nUsers, Movies/TV, Reviews, Comments, Watchlist, History, Preferences)]
-        H[(Redis\nCache + JWT Blacklist + User Cache)]
+        G[("PostgreSQL: Users, Movies/TV, Reviews, Comments, Watchlist, History, Preferences")]
+        H[("Redis: Cache + JWT Blacklist + User Cache")]
     end
 
     D --> G
@@ -30,9 +30,9 @@ flowchart LR
     F --> H
 
     subgraph External[External Services]
-        I[TMDb API\nMovie/TV Metadata]
+        I["TMDb API - Movie/TV Metadata"]
         J[External Ratings APIs]
-        K[OAuth Providers\n(Google, Facebook)]
+        K["OAuth Providers (Google, Facebook)"]
     end
 
     E <-->|Async HTTP (httpx)| I
